@@ -7,3 +7,8 @@ app = Flask(__name__)
 def home():
     base_story = story
     return render_template('home.html', story=base_story)
+
+@app.route('/story')
+def write_story():
+    display_text = story.generate(request.args)
+    return render_template('results.html', result=display_text)
